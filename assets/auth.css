@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+/* ===== GLOBAL ===== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #0f172a, #1e293b);
+    color: white;
+}
+
+/* ===== FORM CONTAINER ===== */
+.auth-container {
+    background: rgba(30, 41, 59, 0.85);
+    backdrop-filter: blur(12px);
+    padding: 40px 50px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.45);
+    width: 380px;
+    max-width: 90%;
+    text-align: center;
+}
+
+/* ===== HEADINGS ===== */
+.auth-container h2 {
+    margin-bottom: 25px;
+    font-weight: 600;
+}
+
+/* ===== INPUT FIELDS ===== */
+.auth-container input,
+.auth-container select {
+    width: 100%;
+    padding: 12px 15px;
+    margin: 12px 0;
+    border-radius: 10px;
+    border: none;
+    outline: none;
+    font-size: 14px;
+}
+
+/* ===== BUTTONS ===== */
+.auth-container button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 15px;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(45deg, #38bdf8, #0ea5e9);
+    color: white;
+    font-weight: 500;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.auth-container button:hover {
+    transform: scale(1.05);
+    background: linear-gradient(45deg, #0ea5e9, #0284c7);
+}
+
+/* ===== LINKS ===== */
+.auth-container p {
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.auth-container a {
+    color: #38bdf8;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.auth-container a:hover {
+    text-decoration: underline;
+}
+
+/* ===== ERROR & SUCCESS MESSAGES ===== */
+.auth-container .errors {
+    background: rgba(220, 38, 38, 0.2);
+    padding: 10px 15px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    color: #f87171;
+}
+
+.auth-container .success {
+    background: rgba(5, 150, 105, 0.2);
+    padding: 10px 15px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    color: #34d399;
+}
