@@ -1,8 +1,8 @@
 <?php
-include_once './db/config.php';
+include_once __DIR__ . '/db/config.php';
 checkLogin();
 $user = currentUser();
-$role = $user['role'];
+checkRole(['admin', 'staff']);
 ?>
 
 <!DOCTYPE html>
@@ -23,52 +23,21 @@ $role = $user['role'];
         <div id="dashboard" class="section">
             <h2>Dashboard</h2>
 
-            <?php if ($role == 'student'): ?>
-                <h3>My Attendance</h3>
-                <table>
-                    <tr>
-                        <th>Subject</th>
-                        <th>Present</th>
-                        <th>Late</th>
-                        <th>Absent</th>
-                    </tr>
-                    <?php
-                    $student_id = $user['id'];
-                    $res = $conn->query("SELECT subject, 
-                    SUM(status='present') AS present,
-                    SUM(status='late') AS late,
-                    SUM(status='absent') AS absent
-                    FROM attendance
-                    WHERE student_id='$student_id'
-                    GROUP BY subject");
-                    while ($row = $res->fetch_assoc()):
-                    ?>
-                        <tr>
-                            <td><?php echo $row['subject']; ?></td>
-                            <td><?php echo $row['present']; ?></td>
-                            <td><?php echo $row['late']; ?></td>
-                            <td><?php echo $row['absent']; ?></td>
-                        </tr>
-                    <?php endwhile; ?>
-                </table>
-
-            <?php else: ?>
-                <!-- Staff/Admin Dashboard Stats -->
-                <div class="card-container">
-                    <div class="card">
-                        <h3>Total Students</h3>
-                        <p><?php echo $conn->query("SELECT COUNT(*) FROM users WHERE role='student'")->fetch_row()[0]; ?></p>
-                    </div>
-                    <div class="card">
-                        <h3>Total Attendance</h3>
-                        <p><?php echo $conn->query("SELECT COUNT(*) FROM attendance")->fetch_row()[0]; ?></p>
-                    </div>
-                    <div class="card">
-                        <h3>Total Subjects</h3>
-                        <p><?php echo $conn->query("SELECT COUNT(*) FROM subjects")->fetch_row()[0]; ?></p>
-                    </div>
+            <!-- Staff/Admin Dashboard Stats -->
+            <div class="card-container">
+                <div class="card">
+                    <h3>Total Students</h3>
+                    <p><?php echo $conn->query("SELECT COUNT(*) FROM users WHERE role='student'")->fetch_row()[0]; ?></p>
                 </div>
-            <?php endif; ?>
+                <div class="card">
+                    <h3>Total Attendance</h3>
+                    <p><?php echo $conn->query("SELECT COUNT(*) FROM attendance")->fetch_row()[0]; ?></p>
+                </div>
+                <div class="card">
+                    <h3>Total Subjects</h3>
+                    <p><?php echo $conn->query("SELECT COUNT(*) FROM subjects")->fetch_row()[0]; ?></p>
+                </div>
+            </div>
         </div>
     </div>
 

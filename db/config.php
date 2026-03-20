@@ -42,10 +42,26 @@ function checkLogin($allowedRoles = [])
     }
 }
 
+function checkRole($roles = [])
+{
+    if (!is_array($roles)) {
+        $roles = explode(',', $roles);
+    }
+
+    $roles = array_map('trim', $roles);
+
+    $user = currentUser();
+    if (!$user || !in_array($user['role'], $roles, true)) {
+        header("Location: {$GLOBALS['base_url']}home.php");
+        exit();
+    }
+}
+
+
 // ===============================
 // CURRENT USER
 // ===============================
 function currentUser()
 {
-    return $_SESSION['users'] ?? null;
+return $_SESSION['users'] ?? null;
 }

@@ -1,6 +1,7 @@
 <?php
-include_once './db/config.php';
+include_once __DIR__ . '/../db/config.php';
 checkLogin(['admin']);
+checkRole(['admin', 'staff']);
 ?>
 
 <!DOCTYPE html>

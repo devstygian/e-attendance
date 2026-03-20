@@ -1,6 +1,7 @@
 <?php
 include_once __DIR__ . '/../db/config.php';
 checkLogin();
+checkRole(['admin', 'staff']);
 
 $role = $_SESSION['users']['role'];
 ?>

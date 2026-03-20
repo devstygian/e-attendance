@@ -1,5 +1,5 @@
 <?php
-include_once '../db/config.php'; // config.php starts session
+include_once __DIR__ . '/../db/config.php'; // config.php starts session
 
 $errors = [];
 
